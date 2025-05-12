@@ -1,0 +1,6 @@
+- iiit bangalore is engaged in various research projects across multiple domains, including the isid research grant fcra, oxford internet institute workshop fcra, and dot rural fcra.  
+- faculty members have published papers in over 60 national and international journals, covering areas such as data science, computing systems, and urban mobility.  
+- iiit bangalore hosts several specialized labs, including the smart city lab, ascend studio, radar sensing lab, cssmp, mahabala ganaka labs, advanced wireless communications lab, speech lab, and the connected devices and wearables lab.  
+- the cognitive computing centre of excellence offers a remotely accessible lab, allowing users to access equipment at any time, including those with disabilities.  
+- research at iiit bangalore is supported by various grants, including ₹163.3 lakhs from nm-icps, department of science and technology; ₹5 lakhs from the start-up research grant, iiitb; ₹30.37 lakhs from non-contact cross-medium communication, nstl, drdo; and ₹174.45 lakhs from a comprehensive iot security ecosystem and sandbox, meity.  
+- collaborations with organizations such as nimhans and novo nordisk gbs facilitate joint research initiatives, innovation projects, and skill development programs.

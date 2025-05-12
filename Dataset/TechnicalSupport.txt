@@ -1,0 +1,10 @@
+- iiit bangalore provides 24/7 wifi service through a reliable isp. credentials are given upon joining, and maintenance or shutdown notifications are sent via email. for internet-related issues, contact the internet committee or visit this link.  
+- for it-related queries and complaints, contact the it and data centre manager, m k durai murugan, at murugan@iiitb.ac.in.  
+- ready wire is an in-house app developed by iiit bangalore, where students can raise academic and non-academic queries or complaints. it integrates inquiries or complaints registered via email and web-based forms into its database.  
+- for login issues related to student portals, contact the it and data centre manager, m k durai murugan, at murugan@iiitb.ac.in.  
+- for issues related to id cards and biometrics, contact the registrar's office at registrar-office@iiitb.ac.in or call 080-41407777 ext.  
+- general contact information for iiit bangalore:  
+  address: 26/c, opposite of infosys gate 1, electronics city phase 1, hosur road, bengaluru - 560100  
+  phone: +91 80 4140 7777 / 2852 7627  
+  fax: +91 80 4140 7704  
+  email: registrar-office@iiitb.ac.in  

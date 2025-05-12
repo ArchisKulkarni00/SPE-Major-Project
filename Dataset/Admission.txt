@@ -1,0 +1,38 @@
+- btech and integrated mtech (imtech) at iiit bangalore require class 12 or equivalent with first-class marks and mathematics as a subject.  
+- admission to btech and imtech is based on jee main crl rank.  
+- the 2024 jee main closing ranks for btech and imtech were approximately 9300 for cse and 13700 for ece.  
+- the application fee for btech and imtech is ₹1,000 (non-refundable).  
+- required documents for btech and imtech application include jee main scorecard, class 10 and 12 mark sheets, id proof, and passport-sized photographs.  
+- hostel stay is mandatory for btech and imtech students.  
+- the total seat intake for btech and imtech combined is 270.  
+- applications for btech and imtech are submitted through the iiitb applicant portal at https://erp.iiitb.net/applicant-portal/#/auth/login.  
+- applications for btech and imtech typically open in april, and for 2024 the deadline was june 3; reporting is in july 2025.  
+- mtech in cse or ece at iiit bangalore requires a be/btech degree with a minimum of 65% aggregate.  
+- admission to mtech cse and ece is through gate scores (cs/it papers for cse and ec/in/ee for ece).  
+- the 2024 gate cutoffs for mtech were 591 for cse and 442 for ece.  
+- the application fee for mtech is ₹1,500.  
+- required documents for mtech application include gate scorecard, degree certificate, and id proof.  
+- hostel stay is mandatory for mtech students.  
+- seat intake for mtech across cse and ece is 60.  
+- mtech applications are submitted via https://www.iiitb.ac.in/courses/mtech-cse-admissions, and the 2025 application deadline is tentatively may 12.  
+- phd applicants must have a master’s degree (mtech or msc research) and gate or ugc-net qualification.  
+- ms (research) applicants must have a 4-year be/btech degree and a valid gate or gre score.  
+- applicants without valid scores for phd or ms must take a written test followed by an interview.  
+- selection for phd and ms is based on domain-specific requirements and performance in the interview.  
+- domains for phd and ms include cs, dsai, vlsi, etc., while ms excludes mathematics and physics.  
+- the application fee for phd and ms (research) is ₹1,000.  
+- required documents for phd and ms applications include degree certificates, entrance test scorecards, and a research proposal.  
+- applications for phd and ms are submitted through http://pravesh.iiitb.net.  
+- the application deadline for phd and ms is may 8, 2025, and interviews will be held from june 2 to 12, 2025.  
+- msc in digital society at iiit bangalore is open to graduates from any discipline.  
+- admission to msc is through a written test, which is waived for applicants with valid cat, ceed, cucet, or tissnet scores.  
+- selection for msc is based on performance in the entrance test and/or interview.  
+- required documents for msc application include graduation mark sheets and entrance test scorecard if applicable.  
+- msc applications are submitted through https://www.iiitb.ac.in/admissions.  
+- the msc digital society test and interview will be held on may 17 and 18, 2025.  
+- the post graduate programme in digital product design and management (pgp-dpdm) requires an undergraduate degree with at least 60% marks; work experience is optional.  
+- admission to pgp-dpdm is through cat or ceed scores, or the institute's own test followed by a personal interview.  
+- selection for pgp-dpdm is based on entrance scores and personal interview performance.  
+- required documents for pgp-dpdm include degree certificates, entrance test scorecard, and a resume if applicable.  
+- applications for pgp-dpdm are submitted via https://www.iiitb.ac.in/courses/post-graduate-programme.  
+- the application deadline for pgp-dpdm is april 30, 2025, and the program starts in july 2025.

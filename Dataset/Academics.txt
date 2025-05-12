@@ -1,0 +1,59 @@
+- b.tech in computer science and engineering includes core courses in computer science, mathematics, and engineering fundamentals.  
+- electives for b.tech in computer science and engineering are offered from the 5th semester, with specialization options such as artificial intelligence, data science, and software engineering.  
+- b.tech in computer science and engineering includes interdisciplinary courses through electives.  
+- b.tech in computer science and engineering follows the choice based credit system (cbcs).  
+- mode of learning for b.tech in computer science and engineering is on-campus.
+
+- b.tech in data science and artificial intelligence focuses on data science, machine learning, and ai technologies.  
+- electives in b.tech in data science and artificial intelligence include deep learning and big data analytics.  
+- b.tech in data science and artificial intelligence integrates interdisciplinary courses into the program.  
+- b.tech in data science and artificial intelligence follows the choice based credit system (cbcs).  
+- mode of learning for b.tech in data science and artificial intelligence is on-campus.
+
+- b.tech in electronics and communication engineering covers electronics, communication systems, and signal processing.  
+- electives for b.tech in electronics and communication engineering include vlsi, embedded systems, and wireless communication.  
+- b.tech in electronics and communication engineering offers interdisciplinary courses.  
+- b.tech in electronics and communication engineering follows the choice based credit system (cbcs).  
+- mode of learning for b.tech in electronics and communication engineering is on-campus.
+
+- integrated m.tech (imtech) is a 5-year program combining b.tech and m.tech degrees.  
+- imtech program offers specializations such as artificial intelligence and machine learning (aiml), theoretical and systems computer design (tscd), networking and communication (nc), vlsi, and digital society.  
+- integrated m.tech includes electives and interdisciplinary courses.  
+- integrated m.tech follows the choice based credit system (cbcs).  
+- mode of learning for integrated m.tech is on-campus.
+
+- m.tech in computer science and engineering is a 2-year postgraduate program.  
+- core courses in m.tech in computer science and engineering include algorithms, software systems, and mathematics.  
+- m.tech in computer science and engineering offers specializations in theoretical computer science and software systems.  
+- electives in m.tech in computer science and engineering cover various advanced topics.  
+- m.tech in computer science and engineering follows the choice based credit system (cbcs).  
+- mode of learning for m.tech in computer science and engineering is on-campus.
+
+- m.tech in electronics and communication engineering is a 2-year postgraduate program.  
+- m.tech in electronics and communication engineering focuses on advanced electronics and communication systems.  
+- specializations in m.tech in electronics and communication engineering include networking and communication, and vlsi systems.  
+- electives include signal processing and embedded systems.  
+- m.tech in electronics and communication engineering follows the choice based credit system (cbcs).  
+- mode of learning for m.tech in electronics and communication engineering is on-campus.
+
+- master of science by research is a research-oriented postgraduate program lasting approximately 2 years.  
+- the master of science by research emphasizes independent research and culminates in a thesis.  
+- coursework in the master of science by research is limited; the focus is primarily on developing research skills.  
+- mode of learning for the master of science by research is on-campus.
+
+- ph.d. program is a research-intensive doctoral program lasting 3 to 5 years.  
+- the ph.d. program requires completion of original research and submission of a dissertation.  
+- ph.d. programs include minimal coursework, with a strong focus on independent research.  
+- mode of learning for the ph.d. program is on-campus.
+
+- m.sc. in digital society is a 2-year interdisciplinary postgraduate program.  
+- m.sc. in digital society combines information technology and social sciences.  
+- specializations in m.sc. in digital society include human-centered digital design and data-driven digital design.  
+- the program includes electives and interdisciplinary courses.  
+- m.sc. in digital society follows the choice based credit system (cbcs).  
+- mode of learning for m.sc. in digital society is on-campus.
+
+- post graduate programme in digital product design and management (pgp-dpdm) is a 1-year full-time program starting in july 2025.  
+- pgp-dpdm focuses on digital product design, product management, and interdisciplinary approaches.  
+- the pgp-dpdm program includes electives and interdisciplinary courses.  
+- mode of learning for pgp-dpdm is on-campus.

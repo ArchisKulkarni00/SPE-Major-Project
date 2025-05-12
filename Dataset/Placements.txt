@@ -1,0 +1,33 @@
+- total offers for the 2023–2024 placement season were 578.  
+- internship offers totaled 311, and full-time offers amounted to 267.  
+
+- the highest full-time ctc for imtech cse was 65 lpa, with an average of 33.4 lpa and a median of 28.3 lpa.  
+- the highest full-time ctc for imtech ece was 65 lpa, with an average of 36.2 lpa and a median of 36.4 lpa.  
+- the highest full-time ctc for mtech cse was 65 lpa, with an average of 21.8 lpa and a median of 18.9 lpa.  
+- the highest full-time ctc for mtech ece was 39.3 lpa, with an average of 29.2 lpa and a median of 36.4 lpa.  
+
+- the highest internship stipend for imtech cse was 177k, with an average of 69k and a median of 55k.  
+- the highest internship stipend for imtech ece was 240k, with an average of 59.5k and a median of 45k.  
+- the highest internship stipend for mtech cse was 110k, with an average of 55.1k and a median of 50k.  
+- the highest internship stipend for mtech ece was 60k, with an average of 44.6k and a median of 45k.  
+
+- 96 out of 97 imtech cse students received internship/thesis offers.  
+- 24 out of 25 imtech ece students received internship/thesis offers.  
+- 146 out of 147 mtech cse students received internship/thesis offers.  
+- 27 out of 27 mtech ece students received internship/thesis offers.  
+
+- 87 out of 97 imtech cse students received full-time job offers.  
+- 18 out of 25 imtech ece students received full-time job offers.  
+- 132 out of 147 mtech cse students received full-time job offers.  
+- 26 out of 27 mtech ece students received full-time job offers.  
+
+- 27 students received full-time ctc offers greater than 40 lpa.  
+- 61 students received full-time ctc offers between 30 and 40 lpa.  
+- 133 students received full-time ctc offers between 20 and 30 lpa.  
+- 73 students received full-time ctc offers between 10 and 20 lpa.  
+- 80 students received full-time ctc offers less than 10 lpa.  
+
+- top recruiters included amazon, google, microsoft, nvidia, qualcomm, cisco, flipkart, salesforce, oracle, uber, samsung, and intel.  
+- other top recruiters included goldman sachs, morgan stanley, icici bank, wells fargo, de shaw & co, and spaulding ridge.  
+- companies like texas instruments, bosch, analog devices, infineon, micron, and mercedes-benz also recruited.  
+- additional recruiters included infosys, wipro, tesco, ericsson, thoughtspot, netapp, mathworks, dell, and urban company.

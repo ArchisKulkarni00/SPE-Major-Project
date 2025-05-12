@@ -1,0 +1,14 @@
+# config.yml
+data_dir: "./Dataset"
+collection_name: "iiitb_dataset"
+chunk_size: 400
+chunk_overlap: 40
+embedding_model: "nomic-embed-text"
+batch_size: 32
+milvus_path: "./iiitb_dataset.db"
+ollama_host: "172.31.80.1"
+ollama_port: "11434"
+chat_model: "llama3.2:latest"
+top_k: 3
+score_threshold: 0.5
+system_prompt: "you are a chatbot for a college. use formal language. answer the query based on context. refuse to answer anything unrelated to college policies, courses, admissions, campus. do not mention the provided context in the answer."
