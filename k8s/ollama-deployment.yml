@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      initContainers:
+        - name: model-downloader
+          image: ollama/ollama
+          command:
+            - sh
+            - -c
+            - |
+              for model in nomic-embed-text llama3.2; do
+                if ! ollama list | grep -q "$model"; then
+                  echo "Pulling $model..."
+                  ollama pull "$model"
+                else
+                  echo "$model already exists, skipping."
+                fi
+              done
+          volumeMounts:
+            - name: model-storage
+              mountPath: /root/.ollama
+      containers:
+        - name: ollama
+          image: ollama/ollama
+          ports:
+            - containerPort: 11434
+          env:
+            - name: OLLAMA_MODELS
+              value: /root/.ollama
+          volumeMounts:
+            - name: model-storage
+              mountPath: /root/.ollama
+      volumes:
+        - name: model-storage
+          persistentVolumeClaim:
+            claimName: ollama-models-pvc

@@ -1,0 +1,90 @@
+---
+- name: Install and setup Minikube on Ubuntu WSL
+  hosts: localhost
+  remote_user: archis
+  become: true
+
+  vars:
+    repo_url: "https://github.com/your-org/your-repo.git"
+    project_dir: "{{ lookup('env', 'HOME') }}/ansible-college-chatbot"
+    k8s_manifest_dir: "{{ project_dir }}/k8s"
+
+  tasks:
+    - name: Ensure apt cache is updated
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install required dependencies
+      apt:
+        name:
+          - curl
+          - apt-transport-https
+          - ca-certificates
+          - gnupg
+          - conntrack
+        state: present
+
+    - name: Ensure Docker is installed
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Check if kubectl exists in /usr/local/bin
+      stat:
+        path: /usr/local/bin/kubectl
+      register: kubectl_usr_local
+
+    - name: Check if kubectl exists in /snap/bin
+      stat:
+        path: /snap/bin/kubectl
+      register: kubectl_snap
+
+    - name: Download kubectl only if not found
+      get_url:
+        url: "https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl"
+        dest: /usr/local/bin/kubectl
+        mode: '0755'
+      when: not kubectl_usr_local.stat.exists and not kubectl_snap.stat.exists
+
+    - name: Check if Minikube is already installed
+      stat:
+        path: /usr/local/bin/minikube
+      register: minikube_stat
+
+    - name: Download Minikube if not already installed
+      get_url:
+        url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        dest: /usr/local/bin/minikube
+        mode: '0755'
+      when: not minikube_stat.stat.exists
+
+    - name: Start Minikube with Docker driver
+      become: false
+      environment:
+        CHANGE_MINIKUBE_NONE_USER: "true"
+      shell: minikube start --driver=docker
+      register: minikube_start_output
+      ignore_errors: yes
+
+    - name: Print Minikube startup output
+      debug:
+        var: minikube_start_output.stdout_lines
+
+    - name: Clone project repo if not already present
+      become: false
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ project_dir }}"
+        update: yes
+
+    - name: Apply Kubernetes manifests
+      become: false
+      shell: kubectl apply -f {{ k8s_manifest_dir }}
+      args:
+        chdir: "{{ project_dir }}"
+      register: k8s_apply_output
+
+    - name: Show output of kubectl apply
+      debug:
+        var: k8s_apply_output.stdout_lines

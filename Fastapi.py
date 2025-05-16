@@ -5,12 +5,23 @@ from ollama import Client
 from pymilvus import MilvusClient
 from utils import load_config, retrieve_context
 import requests
+from fastapi.middleware.cors import CORSMiddleware
+import os
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],
+)
 config = load_config()
 
 # Initialize clients
-ollama_url = 'http://{host}:{port}'.format(host=config["ollama_host"], port=config["ollama_port"])
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", "ollama-service")
+OLLAMA_PORT = os.getenv("OLLAMA_PORT", "11434")
+ollama_url = 'http://{host}:{port}'.format(host=OLLAMA_HOST, port=OLLAMA_PORT)
 ollama_client = Client(host=ollama_url)
 milvus_client = MilvusClient(config["milvus_path"])
 

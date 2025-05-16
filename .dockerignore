@@ -1,0 +1,8 @@
+Dataset/
+
+# Exclude Ansible configuration files
+deoploy.yml
+inventory
+
+# Exclude Jenkins configuration files
+Jenkinsfile

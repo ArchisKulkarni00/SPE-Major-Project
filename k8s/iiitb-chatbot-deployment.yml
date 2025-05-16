@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iiitb-chatbot-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iiitb-chatbot
+  template:
+    metadata:
+      labels:
+        app: iiitb-chatbot
+    spec:
+      containers:
+      - name: iiitb-chatbot
+        image: archis002/iiitb-chatbot
+        ports:
+        - containerPort: 8000

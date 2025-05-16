@@ -2,12 +2,15 @@ from utils import load_config, read_text_files, semantic_chunker, generate_embed
 from ollama import Client
 import hashlib
 import numpy as np
+import os
 
 config = load_config()
 print("⚙️ Loaded configs:", config)
 
 # SETUP OLLAMA CLIENT
-ollama_url = 'http://{host}:{port}'.format(host=config["ollama_host"], port=config["ollama_port"])
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", config["ollama_host"])
+OLLAMA_PORT = os.getenv("OLLAMA_PORT", "11434")
+ollama_url = 'http://{host}:{port}'.format(host=OLLAMA_HOST, port=OLLAMA_PORT)
 ollama_client = Client(
   host=ollama_url,
 )

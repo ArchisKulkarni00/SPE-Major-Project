@@ -4,12 +4,15 @@ from ollama import Client
 from utils import retrieve_context
 import requests
 import json
+import os
 
 # READ THE CONFIG FILE
 config = load_config()
 
 # SETUP OLLAMA CLIENT
-ollama_url = 'http://{host}:{port}'.format(host=config["ollama_host"], port=config["ollama_port"])
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", "ollama-service")
+OLLAMA_PORT = os.getenv("OLLAMA_PORT", "11434")
+ollama_url = 'http://{host}:{port}'.format(host=OLLAMA_HOST, port=OLLAMA_PORT)
 ollama_client = Client(
   host=ollama_url,
 )
