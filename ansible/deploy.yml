@@ -1,11 +1,10 @@
 ---
 - name: Install and setup Minikube on Ubuntu WSL
   hosts: localhost
-  remote_user: archis
   become: true
 
   vars:
-    repo_url: "https://github.com/your-org/your-repo.git"
+    repo_url: "https://github.com/ArchisKulkarni00/SPE-Major-Project.git"
     project_dir: "{{ lookup('env', 'HOME') }}/ansible-college-chatbot"
     k8s_manifest_dir: "{{ project_dir }}/k8s"
 
