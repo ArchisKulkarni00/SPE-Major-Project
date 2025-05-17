@@ -13,5 +13,5 @@ docker info
 minikube version
 
 # Run
-minikube start --driver=docker
+minikube start --driver=docker --ssh-ip-address='' --container-runtime=docker --force --no-vtx-check --alsologtostderr --v=1
 EOF

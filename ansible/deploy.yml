@@ -1,4 +1,3 @@
----
 - name: Install and setup Minikube on Ubuntu WSL
   hosts: localhost
   become: true
@@ -7,6 +6,7 @@
     repo_url: "https://github.com/ArchisKulkarni00/SPE-Major-Project.git"
     project_dir: "/tmp/ansible-college-chatbot"
     k8s_manifest_dir: "{{ project_dir }}/k8s"
+    minikube_bin_path: "/usr/local/bin/minikube"
 
   tasks:
     - name: Ensure apt cache is updated
@@ -48,42 +48,37 @@
 
     - name: Check if Minikube is already installed
       stat:
-        path: /usr/local/bin/minikube
+        path: "{{ minikube_bin_path }}"
       register: minikube_stat
 
     - name: Download Minikube if not already installed
       get_url:
         url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-        dest: /usr/local/bin/minikube
+        dest: "{{ minikube_bin_path }}"
         mode: '0755'
       when: not minikube_stat.stat.exists
 
-    - name: Start Minikube with Docker driver
-      become: false
+    - name: Set up Minikube for linuxboi
+      become_user: linuxboi
       environment:
-        CHANGE_MINIKUBE_NONE_USER: "true"
-      shell: minikube start --driver=docker
-      register: minikube_start_output
-      ignore_errors: yes
-
-    - name: Print Minikube startup output
-      debug:
-        var: minikube_start_output.stdout_lines
-
-    - name: Clone project repo if not already present
-      become: false
-      git:
-        repo: "{{ repo_url }}"
-        dest: "{{ project_dir }}"
-        update: yes
-
-    - name: Apply Kubernetes manifests
-      become: false
-      shell: kubectl apply -f {{ k8s_manifest_dir }}
+        HOME: "/home/linuxboi"
+        MINIKUBE_HOME: "/home/linuxboi"
+        KUBECONFIG: "/home/linuxboi/.kube/config"
+        PATH: "/home/linuxboi/bin:/usr/local/bin:{{ ansible_env.PATH }}"
+      shell: |
+        mkdir -p $HOME/.kube $HOME/.minikube
+        touch $HOME/.kube/config
+        minikube start --driver=docker --force --alsologtostderr
       args:
-        chdir: "{{ project_dir }}"
-      register: k8s_apply_output
-
-    - name: Show output of kubectl apply
-      debug:
-        var: k8s_apply_output.stdout_lines
+        executable: /bin/bash
+    
+    - name: Apply Kubernetes manifests using kubectl
+      become_user: linuxboi
+      environment:
+        HOME: "/home/linuxboi"
+        KUBECONFIG: "/home/linuxboi/.kube/config"
+        PATH: "/home/linuxboi/bin:/usr/local/bin:{{ ansible_env.PATH }}"
+      shell: |
+        kubectl apply -f {{ k8s_manifest_dir }} --recursive
+      args:
+        executable: /bin/bash

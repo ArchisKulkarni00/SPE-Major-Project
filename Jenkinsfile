@@ -47,14 +47,25 @@ pipeline {
             }
         }
 
-   stage('Run Ansible Playbook') {
-            steps {
-                script {
-                    sh 'chmod +x ./ansible/run-as-linuxboi.sh'
-                    sh './ansible/run-as-linuxboi.sh'
+        stage('Run Ansible Playbook') {
+                    steps {
+                        script {
+                            ansiblePlaybook(
+                                playbook: './ansible/deploy.yml',
+                                inventory: './ansible/inventory'
+                            )
+                        }
+                    }
                 }
-            }
-        }
+
+//    stage('Run Minikube') {
+//             steps {
+//                 script {
+//                     sh 'chmod +x ./ansible/run-as-linuxboi.sh'
+//                     sh './ansible/run-as-linuxboi.sh'
+//                 }
+//             }
+//         }
 
     }
 }
