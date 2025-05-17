@@ -50,6 +50,7 @@ pipeline {
    stage('Run Ansible Playbook') {
             steps {
                 script {
+                    sh 'chmod +x ./ansible/run-as-linuxboi.sh'
                     sh './ansible/run-as-linuxboi.sh'
                 }
             }
