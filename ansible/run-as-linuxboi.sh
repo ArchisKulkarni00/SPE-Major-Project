@@ -1,11 +1,17 @@
 #!/bin/bash
-# scripts/run_as_linuxboi.sh
+echo "Switching to linuxboi..."
+sudo -u linuxboi -i <<'EOF'
+echo "Current user: $(whoami)"
+echo "HOME is $HOME"
+export MINIKUBE_HOME=$HOME
+export KUBECONFIG=$HOME/.kube/config
+export PATH=$HOME/bin:$PATH
 
-set -e
+# Debug
+which docker
+docker info
+minikube version
 
-echo "[INFO] Running Ansible playbook as linuxboi..."
-
-sudo -u linuxboi -H bash -c '
-  cd /tmp/ansible-college-chatbot || exit 1
-  ansible-playbook ./ansible/deploy.yml -i ./ansible/inventory
-'
+# Run
+minikube start --driver=docker
+EOF
