@@ -50,10 +50,7 @@ pipeline {
    stage('Run Ansible Playbook') {
             steps {
                 script {
-                    ansiblePlaybook(
-                        playbook: './ansible/deploy.yml',
-                        inventory: './ansible/inventory'
-                     )
+                    sh './ansible/run-as-linuxboi.sh'
                 }
             }
         }
