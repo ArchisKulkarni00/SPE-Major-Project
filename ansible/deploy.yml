@@ -58,27 +58,27 @@
         mode: '0755'
       when: not minikube_stat.stat.exists
 
-    - name: Set up Minikube for linuxboi
-      become_user: linuxboi
-      environment:
-        HOME: "/home/linuxboi"
-        MINIKUBE_HOME: "/home/linuxboi"
-        KUBECONFIG: "/home/linuxboi/.kube/config"
-        PATH: "/home/linuxboi/bin:/usr/local/bin:{{ ansible_env.PATH }}"
-      shell: |
-        mkdir -p $HOME/.kube $HOME/.minikube
-        touch $HOME/.kube/config
-        minikube start --driver=docker --force --alsologtostderr
-      args:
-        executable: /bin/bash
+    # - name: Set up Minikube for linuxboi
+    #   become_user: linuxboi
+    #   environment:
+    #     HOME: "/home/linuxboi"
+    #     MINIKUBE_HOME: "/home/linuxboi"
+    #     KUBECONFIG: "/home/linuxboi/.kube/config"
+    #     PATH: "/home/linuxboi/bin:/usr/local/bin:{{ ansible_env.PATH }}"
+    #   shell: |
+    #     mkdir -p $HOME/.kube $HOME/.minikube
+    #     touch $HOME/.kube/config
+    #     minikube start --driver=docker --force --alsologtostderr
+    #   args:
+    #     executable: /bin/bash
     
-    - name: Apply Kubernetes manifests using kubectl
-      become_user: linuxboi
-      environment:
-        HOME: "/home/linuxboi"
-        KUBECONFIG: "/home/linuxboi/.kube/config"
-        PATH: "/home/linuxboi/bin:/usr/local/bin:{{ ansible_env.PATH }}"
-      shell: |
-        kubectl apply -f {{ k8s_manifest_dir }} --recursive
-      args:
-        executable: /bin/bash
+    # - name: Apply Kubernetes manifests using kubectl
+    #   become_user: linuxboi
+    #   environment:
+    #     HOME: "/home/linuxboi"
+    #     KUBECONFIG: "/home/linuxboi/.kube/config"
+    #     PATH: "/home/linuxboi/bin:/usr/local/bin:{{ ansible_env.PATH }}"
+    #   shell: |
+    #     kubectl apply -f {{ k8s_manifest_dir }} --recursive
+    #   args:
+    #     executable: /bin/bash

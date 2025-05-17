@@ -48,24 +48,24 @@ pipeline {
         }
 
         stage('Run Ansible Playbook') {
-                    steps {
-                        script {
-                            ansiblePlaybook(
-                                playbook: './ansible/deploy.yml',
-                                inventory: './ansible/inventory'
-                            )
-                        }
-                    }
+            steps {
+                script {
+                    ansiblePlaybook(
+                        playbook: './ansible/deploy.yml',
+                        inventory: './ansible/inventory'
+                    )
                 }
+            }
+        }
 
-//    stage('Run Minikube') {
-//             steps {
-//                 script {
-//                     sh 'chmod +x ./ansible/run-as-linuxboi.sh'
-//                     sh './ansible/run-as-linuxboi.sh'
-//                 }
-//             }
-//         }
+        stage('Run Minikube and setup the k8s yml files') {
+            steps {
+                script {
+                    sh 'chmod +x ./ansible/run-as-linuxboi.sh'
+                    sh './ansible/run-as-linuxboi.sh'
+                }
+            }
+        }
 
     }
 }
