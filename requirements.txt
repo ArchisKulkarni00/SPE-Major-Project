@@ -4,3 +4,7 @@ typing
 tqdm
 Fastapi
 uvicorn
+PyYAML
+spacy
+requests
+numpy
