@@ -1,19 +1,8 @@
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ollama-pv
-spec:
-  capacity:
-    storage: 5Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /mnt/data/ollama-models  # Path on Minikube VM
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: ollama-models-pvc
+  namespace: iiitb-chatbot
 spec:
   accessModes:
     - ReadWriteOnce
