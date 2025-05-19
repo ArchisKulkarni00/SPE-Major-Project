@@ -6,3 +6,4 @@ Fastapi
 uvicorn
 PyYAML
 requests
+spacy
