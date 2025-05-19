@@ -7,4 +7,3 @@ uvicorn
 PyYAML
 spacy
 requests
-numpy
