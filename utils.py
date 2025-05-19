@@ -5,15 +5,8 @@ import yaml
 from ollama import Client
 import csv
 from collections import defaultdict
-import spacy
 from pymilvus import MilvusClient
 
-# Load Spacy's English model
-try:
-    nlp = spacy.load("en_core_web_sm")
-except OSError:
-    print("Error: spaCy English model 'en_core_web_sm' not found. Please install it first.")
-    exit(1)
 
 PREFIX_SEARCH_DOC = "search_document:"
 PREFIX_SEARCH_QUERY = "search_query:"
@@ -337,6 +330,14 @@ def load_synonyms_from_csv(csv_path="synonyms.csv"):
 
 def extract_important_terms(text):
     """Extract nouns, proper nouns, and noun phrases from text."""
+    import spacy
+    
+    # Load Spacy's English model
+    try:
+        nlp = spacy.load("en_core_web_sm")
+    except OSError:
+        print("Error: spaCy English model 'en_core_web_sm' not found. Please install it first.")
+        exit(1)
     doc = nlp(text.lower())
     terms = set()
     
