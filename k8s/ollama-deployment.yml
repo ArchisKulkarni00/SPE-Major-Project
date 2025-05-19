@@ -16,25 +16,29 @@ spec:
       containers:
         - name: ollama
           image: ollama/ollama
+          command:
+            - sh
+            - -c
+            - |
+              ollama serve &
+
+              echo "Waiting for Ollama to start..."
+              until ollama list >/dev/null 2>&1; do
+                sleep 2
+              done
+
+              echo "Pulling models..."
+              for model in nomic-embed-text llama3.2; do
+                if ! ollama list | grep -q "$model"; then
+                  echo "Pulling $model..."
+                  ollama pull "$model"
+                else
+                  echo "$model already exists, skipping."
+                fi
+              done
+
+              # Keep container running
+              tail -f /dev/null
+
           ports:
             - containerPort: 11434
-          lifecycle:
-            postStart:
-              exec:
-                command:
-                  - sh
-                  - -c
-                  - |
-                    echo "Waiting for ollama service to start..."
-                    until curl -s http://localhost:11434 > /dev/null; do
-                      sleep 2
-                    done
-                    echo "Ollama is up. Pulling models..."
-                    for model in nomic-embed-text llama3.2; do
-                      if ! ollama list | grep -q "$model"; then
-                        echo "Pulling $model..."
-                        ollama pull "$model"
-                      else
-                        echo "$model already exists, skipping."
-                      fi
-                    done

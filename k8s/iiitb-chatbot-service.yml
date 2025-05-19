@@ -4,9 +4,10 @@ metadata:
   name: iiitb-chatbot
   namespace: iiitb-chatbot
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8000
       targetPort: 8000
+      nodePort: 30800
   selector:
     app: iiitb-chatbot
