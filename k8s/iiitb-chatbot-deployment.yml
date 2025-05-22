@@ -18,3 +18,8 @@ spec:
         image: archis002/iiitb-chatbot
         ports:
         - containerPort: 8000
+        env:
+        - name: OLLAMA_HOST
+          value: host.minikube.internal
+        - name: OLLAMA_PORT
+          value: "11434"
