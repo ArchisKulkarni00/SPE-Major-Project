@@ -1,71 +1,74 @@
 pipeline {
     agent any
+
     triggers { 
-      githubPush() 
-   }
+        githubPush() 
+    }
+
     environment {
         DOCKER_IMAGE_NAME = 'archis002/iiitb-chatbot'
+        DOCKER_IMAGE_NAME_FE = 'archis002/rag-chatbot'
         GITHUB_REPO_URL = 'https://github.com/ArchisKulkarni00/SPE-Major-Project.git'
+        GITHUB_REPO_URL_FE = 'https://github.com/nitin-rajesh/rag-chatbot.git'
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout FE') {
             steps {
-                script {
-                    // Checkout the code from the GitHub repository
-                    git branch: 'master', url: "${GITHUB_REPO_URL}"
+                git branch: 'Archis-config', url: "${GITHUB_REPO_URL_FE}"
+            }
+        }
+
+        stage('Build Docker Image FE') {
+            steps {
+                docker.build("${DOCKER_IMAGE_NAME_FE}", '.')
+            }
+        }
+
+        stage('Push Docker Image FE') {
+            steps {
+                docker.withRegistry('', 'DockerHubCred') {
+                    sh 'docker tag archis002/rag-chatbot archis002/iiitb-rag:latest'
+                    sh 'docker push archis002/rag-chatbot'
                 }
             }
         }
 
-        // stage('Test') {
-        //     steps {
-        //         script {
-        //             // Run tests
-        //             sh 'python3 testit.py'
-        //         }
-        //     }
-        // }
-
-        stage('Build Docker Image') {
+        stage('Checkout BE') {
             steps {
-                script {
-                    // Build Docker image
-                    docker.build("${DOCKER_IMAGE_NAME}", '.')
-                }
+                git branch: 'master', url: "${GITHUB_REPO_URL}"
             }
         }
 
-        stage('Push Docker Images') {
+        stage('Build Docker Image BE') {
             steps {
-                script{
-                    docker.withRegistry('', 'DockerHubCred') {
+                docker.build("${DOCKER_IMAGE_NAME}", '.')
+            }
+        }
+
+        stage('Push Docker Image BE') {
+            steps {
+                docker.withRegistry('', 'DockerHubCred') {
                     sh 'docker tag archis002/iiitb-chatbot archis002/iiitb-chatbot:latest'
                     sh 'docker push archis002/iiitb-chatbot'
-                    }
-                 }
+                }
             }
         }
 
         stage('Run Ansible Playbook') {
             steps {
-                script {
-                    ansiblePlaybook(
-                        playbook: './ansible/deploy.yml',
-                        inventory: './ansible/inventory'
-                    )
-                }
+                ansiblePlaybook(
+                    playbook: './ansible/deploy.yml',
+                    inventory: './ansible/inventory'
+                )
             }
         }
 
-        stage('Run Minikube and setup the k8s yml files') {
+        stage('Run Minikube and Setup K8s') {
             steps {
-                script {
-                    sh 'chmod +x ./ansible/run-as-linuxboi.sh'
-                    sh './ansible/run-as-linuxboi.sh'
-                }
+                sh 'chmod +x ./ansible/run-as-linuxboi.sh'
+                sh './ansible/run-as-linuxboi.sh'
             }
         }
-
     }
 }

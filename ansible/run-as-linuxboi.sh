@@ -27,10 +27,12 @@ kubectl apply -f /tmp/ansible-college-chatbot/k8s/ollama-pvc.yml
 # 4. Apply deployments
 kubectl apply -f /tmp/ansible-college-chatbot/k8s/iiitb-chatbot-deployment.yml
 kubectl apply -f /tmp/ansible-college-chatbot/k8s/ollama-deployment.yml
+kubectl apply -f /tmp/ansible-college-chatbot-fe/K8s/deployment.yaml
 
 # 5. Apply services
 kubectl apply -f /tmp/ansible-college-chatbot/k8s/iiitb-chatbot-service.yml
 kubectl apply -f /tmp/ansible-college-chatbot/k8s/ollama-service.yml
+kubectl apply -f /tmp/ansible-college-chatbot-fe/K8s/rag-chat-svc.yaml
 
 # 6. Status Check - All resources in iiitb-chatbot namespace
 echo -e "\n📦 Verifying Kubernetes Resources in 'iiitb-chatbot' namespace..."

@@ -5,7 +5,10 @@
   vars:
     repo_url: "https://github.com/ArchisKulkarni00/SPE-Major-Project.git"
     project_dir: "/tmp/ansible-college-chatbot"
+    repo_url_fe: "https://github.com/nitin-rajesh/rag-chatbot.git"
+    project_dir_fe: "/tmp/ansible-college-chatbot-fe"
     k8s_manifest_dir: "{{ project_dir }}/k8s"
+    k8s_manifest_dir_fe: "{{ project_dir_fe }}/K8s"
     minikube_bin_path: "/usr/local/bin/minikube"
 
   tasks:
@@ -63,6 +66,13 @@
         repo: "{{ repo_url }}"
         dest: "{{ project_dir }}"
         update: yes
+    
+    - name: Clone front end project repo if not already present
+      git:
+        repo: "{{ repo_url_fe }}"
+        dest: "{{ project_dir_fe }}"
+        update: yes
+        version: "Archis-config"
 
     # - name: Set up Minikube for linuxboi
     #   become_user: linuxboi
