@@ -1,8 +1,9 @@
 pipeline {
     agent any
 
-    triggers { 
-        githubPush() 
+    // Use polling instead of webhook if needed
+    triggers {
+        pollSCM('* * * * *') // Every minute
     }
 
     environment {
@@ -24,16 +25,20 @@ pipeline {
         stage('Build Docker Image FE') {
             steps {
                 dir('frontend') {
-                    docker.build("${DOCKER_IMAGE_NAME_FE}", '.')
+                    script {
+                        docker.build("${DOCKER_IMAGE_NAME_FE}", '.')
+                    }
                 }
             }
         }
 
         stage('Push Docker Image FE') {
             steps {
-                docker.withRegistry('', 'DockerHubCred') {
-                    sh 'docker tag archis002/rag-chatbot archis002/iiitb-rag:latest'
-                    sh 'docker push archis002/rag-chatbot'
+                script {
+                    docker.withRegistry('', 'DockerHubCred') {
+                        sh 'docker tag archis002/rag-chatbot archis002/iiitb-rag:latest'
+                        sh 'docker push archis002/rag-chatbot'
+                    }
                 }
             }
         }
@@ -49,16 +54,20 @@ pipeline {
         stage('Build Docker Image BE') {
             steps {
                 dir('backend') {
-                    docker.build("${DOCKER_IMAGE_NAME}", '.')
+                    script {
+                        docker.build("${DOCKER_IMAGE_NAME}", '.')
+                    }
                 }
             }
         }
 
         stage('Push Docker Image BE') {
             steps {
-                docker.withRegistry('', 'DockerHubCred') {
-                    sh 'docker tag archis002/iiitb-chatbot archis002/iiitb-chatbot:latest'
-                    sh 'docker push archis002/iiitb-chatbot'
+                script {
+                    docker.withRegistry('', 'DockerHubCred') {
+                        sh 'docker tag archis002/iiitb-chatbot archis002/iiitb-chatbot:latest'
+                        sh 'docker push archis002/iiitb-chatbot'
+                    }
                 }
             }
         }
@@ -66,10 +75,12 @@ pipeline {
         stage('Run Ansible Playbook') {
             steps {
                 dir('backend') {
-                    ansiblePlaybook(
-                        playbook: './ansible/deploy.yml',
-                        inventory: './ansible/inventory'
-                    )
+                    script {
+                        ansiblePlaybook(
+                            playbook: './ansible/deploy.yml',
+                            inventory: './ansible/inventory'
+                        )
+                    }
                 }
             }
         }
@@ -77,8 +88,10 @@ pipeline {
         stage('Run Minikube and Setup K8s') {
             steps {
                 dir('backend') {
-                    sh 'chmod +x ./ansible/run-as-linuxboi.sh'
-                    sh './ansible/run-as-linuxboi.sh'
+                    script {
+                        sh 'chmod +x ./ansible/run-as-linuxboi.sh'
+                        sh './ansible/run-as-linuxboi.sh'
+                    }
                 }
             }
         }
