@@ -15,13 +15,13 @@ pipeline {
     stages {
         stage('Checkout FE') {
             steps {
-                git branch: 'Archis-config', url: "${GITHUB_REPO_URL_FE}"
+                dir('frontend'){git branch: 'Archis-config', url: "${GITHUB_REPO_URL_FE}"}
             }
         }
 
         stage('Build Docker Image FE') {
             steps {
-                docker.build("${DOCKER_IMAGE_NAME_FE}", '.')
+                dir('frontend'){docker.build("${DOCKER_IMAGE_NAME_FE}", '.')}
             }
         }
 
@@ -36,13 +36,13 @@ pipeline {
 
         stage('Checkout BE') {
             steps {
-                git branch: 'master', url: "${GITHUB_REPO_URL}"
+                dir('backend'){git branch: 'master', url: "${GITHUB_REPO_URL}"}
             }
         }
 
         stage('Build Docker Image BE') {
             steps {
-                docker.build("${DOCKER_IMAGE_NAME}", '.')
+                dir('backend'){docker.build("${DOCKER_IMAGE_NAME}", '.')}
             }
         }
 
