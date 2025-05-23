@@ -15,13 +15,17 @@ pipeline {
     stages {
         stage('Checkout FE') {
             steps {
-                dir('frontend'){git branch: 'Archis-config', url: "${GITHUB_REPO_URL_FE}"}
+                dir('frontend') {
+                    git branch: 'Archis-config', url: "${GITHUB_REPO_URL_FE}"
+                }
             }
         }
 
         stage('Build Docker Image FE') {
             steps {
-                dir('frontend'){docker.build("${DOCKER_IMAGE_NAME_FE}", '.')}
+                dir('frontend') {
+                    docker.build("${DOCKER_IMAGE_NAME_FE}", '.')
+                }
             }
         }
 
@@ -36,13 +40,17 @@ pipeline {
 
         stage('Checkout BE') {
             steps {
-                dir('backend'){git branch: 'master', url: "${GITHUB_REPO_URL}"}
+                dir('backend') {
+                    git branch: 'master', url: "${GITHUB_REPO_URL}"
+                }
             }
         }
 
         stage('Build Docker Image BE') {
             steps {
-                dir('backend'){docker.build("${DOCKER_IMAGE_NAME}", '.')}
+                dir('backend') {
+                    docker.build("${DOCKER_IMAGE_NAME}", '.')
+                }
             }
         }
 
@@ -57,17 +65,21 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                ansiblePlaybook(
-                    playbook: './ansible/deploy.yml',
-                    inventory: './ansible/inventory'
-                )
+                dir('backend') {
+                    ansiblePlaybook(
+                        playbook: './ansible/deploy.yml',
+                        inventory: './ansible/inventory'
+                    )
+                }
             }
         }
 
         stage('Run Minikube and Setup K8s') {
             steps {
-                sh 'chmod +x ./ansible/run-as-linuxboi.sh'
-                sh './ansible/run-as-linuxboi.sh'
+                dir('backend') {
+                    sh 'chmod +x ./ansible/run-as-linuxboi.sh'
+                    sh './ansible/run-as-linuxboi.sh'
+                }
             }
         }
     }
