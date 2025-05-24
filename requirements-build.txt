@@ -1,0 +1,9 @@
+ollama
+pymilvus
+typing
+tqdm
+Fastapi
+uvicorn
+PyYAML
+requests
+spacy

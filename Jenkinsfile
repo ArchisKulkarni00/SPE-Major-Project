@@ -53,6 +53,7 @@ pipeline {
 
         stage('Build the database') {
             steps {
+                sh "pip install -r requirements-build.txt"
                 sh "python3 CreateData.py"
             }
         }
