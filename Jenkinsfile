@@ -51,6 +51,18 @@ pipeline {
             }
         }
 
+        stage('Build the database') {
+            steps {
+                sh "python3 CreateData.py"
+            }
+        }
+        
+        stage('Testing') {
+            steps {
+                sh "python3 Test.py"
+            }
+        }
+
         stage('Build Docker Image BE') {
             steps {
                 dir('backend') {
