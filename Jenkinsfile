@@ -54,6 +54,7 @@ pipeline {
         stage('Build the database') {
             steps {
                 sh "pip install -r requirements-build.txt"
+                sh "python3 -m spacy download en_core_web_sm"
                 sh "python3 CreateData.py"
             }
         }
